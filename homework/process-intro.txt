@@ -1,0 +1,15 @@
+1. CPU utilization should be 100% because, in the simulation parameters, there is 0 chance of the process entering an I/O-blocked state.
+
+2. It takes 10 ticks to complete the simulation.
+
+3. Switching the order reduces total ticks to 6, because the processor now has a productive load while one process is I/O-blocked.
+
+4. With SWITCH_ON_END, the simulation takes 9 ticks. The processor is unproductive while waiting for I/O to end.
+
+5. Now the time is reduced to 6 again. Same as in #3.
+
+6. No, resources are wasted toward the end of the simulation when only I/O waiting remains.
+
+7. This behavior differs by switching the processor onto the process that just exited I/O-waiting state. If a process has frequent I/O needs, it can be better to switch to that process once its I/O completes, so it can sooner get started on the next I/O. It is good to start I/O as early as possible rather than working on other loads first.
+
+8. Results are variable. In some situations (e.g. -s 4) the result is the same regardless of -I or -S options.
