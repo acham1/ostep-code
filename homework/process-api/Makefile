@@ -1,7 +1,8 @@
 all: \
 	1_fork.exe\
 	2_open_fork.exe\
-	3_post_fork_order.exe
+	3_post_fork_order.exe\
+	4_fork_exec.exe
 
 1_fork.exe: 1_fork.c
 	gcc -c 1_fork.c
@@ -14,6 +15,10 @@ all: \
 3_post_fork_order.exe: 3_post_fork_order.c
 	gcc -c 3_post_fork_order.c
 	gcc -o 3_post_fork_order.exe 3_post_fork_order.o
+
+4_fork_exec.exe: 4_fork_exec.c
+	gcc -c 4_fork_exec.c
+	gcc -o 4_fork_exec.exe 4_fork_exec.o
 
 clean:
 	rm -f *.o *.exe *~ \#*#
