@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <limits.h>
 
-void tryexecl() {
+void tryexecl(char* cwd) {
+  if (fork()) {
+    printf("Trying execl\n");
+    execl("/bin/ls", cwd, NULL);
+  }
 }
 
 void tryexeclp() {
@@ -20,7 +27,10 @@ void tryexecvpe() {
 }
 
 int main(int argc, char* argv[]) {
-  tryexecl();
+  char cwd[PATH_MAX];
+  getcwd(cwd, sizeof(cwd));
+  
+  tryexecl(cwd);
   tryexeclp();
   tryexecle();
   tryexecv();
