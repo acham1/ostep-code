@@ -3,11 +3,14 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <limits.h>
+#include <sys/wait.h>
 
 void tryexecl(char* cwd) {
   if (fork()) {
     printf("Trying execl\n");
     execl("/bin/ls", cwd, NULL);
+  } else {
+    wait(NULL);
   }
 }
 
