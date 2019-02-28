@@ -9,6 +9,7 @@ void tryexecl(char* cwd) {
   if (fork()) {
     printf("Trying execl\n");
     execl("/bin/ls", cwd, NULL);
+    exit(EXIT_SUCCESS);
   } else {
     wait(NULL);
   }
@@ -17,7 +18,14 @@ void tryexecl(char* cwd) {
 void tryexeclp() {
 }
 
-void tryexecle() {
+void tryexecle(char* cwd) {
+  if (fork()) {
+    printf("Trying execle\n");
+    execle("/bin/ls", cwd, NULL, (char(*)[]) {NULL});
+    exit(EXIT_SUCCESS);
+  } else {
+    wait(NULL);
+  }
 }
 
 void tryexecv() {
@@ -35,7 +43,7 @@ int main(int argc, char* argv[]) {
   
   tryexecl(cwd);
   tryexeclp();
-  tryexecle();
+  tryexecle(cwd);
   tryexecv();
   tryexecvp();
   tryexecvpe();
