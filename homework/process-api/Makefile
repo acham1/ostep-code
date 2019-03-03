@@ -38,7 +38,7 @@ all: \
 
 8_pipe.exe: 8_pipe.c
 	gcc -c 8_pipe.c
-	gcc -o 8_pipe.exe 8_pipe.o
+	gcc -o 8_pipe.exe -lreadline 8_pipe.o
 
 clean:
 	rm -f *.o *.exe *~ \#*#
