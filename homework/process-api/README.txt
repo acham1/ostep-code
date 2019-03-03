@@ -7,3 +7,5 @@
 4. I think there are many variants of the exec functions for convenience. They are all front-ends for execve, but provide alternative functionality for common use cases.
 
 5. In the child, wait returns -1 since there it has no child processes of its own. In the parent, the PID of the child is returned and the resulting status indicates the child exited normally.
+
+6. waitpid is more useful when a process has multiple children and wants to act on a status-change in a specific one of them.

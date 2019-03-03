@@ -3,7 +3,8 @@ all: \
 	2_open_fork.exe\
 	3_post_fork_order.exe\
 	4_fork_exec.exe\
-	5_wait.exe
+	5_wait.exe\
+	6_waitpid.exe
 
 1_fork.exe: 1_fork.c
 	gcc -c 1_fork.c
@@ -24,6 +25,10 @@ all: \
 5_wait.exe: 5_wait.c
 	gcc -c 5_wait.c
 	gcc -o 5_wait.exe 5_wait.o
+
+6_waitpid.exe: 6_waitpid.c
+	gcc -c 6_waitpid.c
+	gcc -o 6_waitpid.exe 6_waitpid.o
 
 clean:
 	rm -f *.o *.exe *~ \#*#
