@@ -9,3 +9,7 @@
 5. In the child, wait returns -1 since there it has no child processes of its own. In the parent, the PID of the child is returned and the resulting status indicates the child exited normally.
 
 6. waitpid is more useful when a process has multiple children and wants to act on a status-change in a specific one of them.
+
+7. Nothing is written to stdout, but the child process exits normally.
+
+8.
